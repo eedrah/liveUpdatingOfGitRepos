@@ -6,5 +6,5 @@ function push {
     )
     git commit -m $message
     git push . local:master
-    git push r master
+    git push origin master
 }
