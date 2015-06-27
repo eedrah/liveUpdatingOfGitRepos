@@ -1,11 +1,17 @@
 # This watches the master branch for changes
 
 function watch {
-    $sha = git rev-parse master
+    function getRemoteSha {
+        return (git ls-remote origin master).split()[0]
+    }
+
+    $sha = getRemoteSha()
 
     while($true){
-        if($sha -ne (git rev-parse master)){
-            $sha = git rev-parse master
+        $remoteSha = getRemoteSha()
+        if($sha -ne $remoteSha){
+            $sha = $remoteSha
+            git pull origin master:master
             git merge master
         }
         sleep 1
