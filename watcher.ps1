@@ -5,10 +5,10 @@ function watch {
         return (git ls-remote origin master).split()[0]
     }
 
-    $sha = getRemoteSha()
+    $sha = ""
 
     while($true){
-        $remoteSha = getRemoteSha()
+        $remoteSha = getRemoteSha
         if($sha -ne $remoteSha){
             $sha = $remoteSha
             git pull origin master:master
