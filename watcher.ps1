@@ -4,7 +4,7 @@ function watch {
     $sha = git rev-parse master
 
     while($true){
-        if(git rev-parse master != $sha){
+        if($sha -ne (git rev-parse master)){
             $sha = git rev-parse master
             git merge master
         }
